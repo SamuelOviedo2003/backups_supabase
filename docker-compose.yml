@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  backup:
+    build: .
+    container_name: supabase-backup
+    env_file:
+      - .env
+    volumes:
+      - ./backups:/backups
+      - ./rclone:/root/.config/rclone   # opcional: para subir backups con rclone
+    restart: always
+
